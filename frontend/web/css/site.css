@@ -1,0 +1,10 @@
+.dropdown-menu {
+    min-width: 120px;
+    /* Menu kengligi */
+}
+
+.dropdown-item img {
+    width: 20px;
+    /* Bayroq o'lchami */
+    margin-right: 8px;
+}
