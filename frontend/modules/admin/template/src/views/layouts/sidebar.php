@@ -56,7 +56,26 @@
                         ],
                     ],
                     ['label' => 'Sahifalar',  'icon' => 'file', 'url' => ['/pages/index']],
+                    ['label' => 'Xodimlar',  'icon' => 'users', 'url' => ['/managers/index']],
                     ['label' => 'Fayl menejeri',  'icon' => 'file', 'url' => ['/file-manager/index']],
+                    [
+                        'icon'  => 'user-graduate',
+                        'label' => 'Qabul',
+                        'items' => [
+                            [
+                                'label' => 'Bog\'lanish',
+                                'url'   => ['/qabul/ariza-list'],
+                            ],
+                            [
+                                'label' => 'Yunalishlar',
+                                'url'   => ['/qabul/edu-list'],
+                            ],
+                            [
+                                'label' => 'Banner',
+                                'url'   => ['/qabul/banner-list'],
+                            ],
+                        ],
+                    ],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Statik ma\'lumotlar', 'header' => true],
                     [
@@ -75,7 +94,7 @@
                         'icon'  => 'chart-bar',
                         'iconStyle' => 'fa',
                         'label' => 'Statistika',
-                        'url' => ['report/year']
+                        'url' => ['/config/statistik']
                     ],
                     ['label' => 'Administrator', 'header' => true],
                     'system' => [

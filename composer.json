@@ -34,7 +34,7 @@
         "hail812/yii2-adminlte3": "~1.1",
         "2amigos/yii2-chartjs-widget": "~2.0",
         "codemix/yii2-localeurls": "^1.7",
-        "froala/yii2-froala-editor": "*"
+        "2amigos/yii2-ckeditor-widget" : "~2.1"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Qo`shish';
-$this->params['breadcrumbs'][] = ['label' => 'Sahifalar', 'url' => ['/pages/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Qabul yunalishlar', 'url' => ['/qabul/edu-list']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php $form = ActiveForm::begin(); ?>
@@ -13,30 +13,26 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-9">
         <div class="card card-outline card-primary card-body">
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'content')->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                'options' => ['id' => 'content'],
-                'clientOptions' => [
-                    'toolbarInline'     => false,
-                    'height'            => 300,
-                    'theme'             => 'dark', //optional: dark, red, gray, royal
-                    'language'          => 'ru'
-                ]
-            ]) ?>
+            <?= $form->field($model, 'desc')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'summ_kunduzgi')->textInput(['maxlength' => true]) ?>
+            <?= $form->field($model, 'summ_sirtqi')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
     <div class="col-md-3">
         <div class=" card card-outline card-primary card-body">
+            <?= $form->field($model, 'type_edu')->widget(Select2::className(), [
+                'data' => $model->getEduType(),
+                'language' => 'uz',
+                'options' => ['placeholder' => 'Tanlang ...'],
+            ]) ?>
             <?= $form->field($model, 'status')->widget(Select2::className(), [
                 'data' => $model->getStatus(),
                 'language' => 'uz',
                 'options' => ['placeholder' => 'Tanlang ...'],
             ]) ?>
-            <?= \frontend\widgets\imageShow\ImageShowWidget::widget([
-                'buttonTitle' => 'Rasmlar'
-            ])?>
         </div>
         <div class="form-group text-right">
-            <?= Html::a('<i class="fa fa-caret-left"></i> Orqaga', ['/pages/index'], ['class' => 'btn btn-sm btn-default']) ?>
+            <?= Html::a('<i class="fa fa-caret-left"></i> Orqaga', ['/qabul/edu-list'], ['class' => 'btn btn-sm btn-default']) ?>
             <?= Html::submitButton('<i class="fa fa-save"></i> Saqlash', ['class' => 'btn btn-sm btn-success']) ?>
         </div>
     </div>

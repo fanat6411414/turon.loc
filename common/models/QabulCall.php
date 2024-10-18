@@ -4,27 +4,24 @@ namespace common\models;
 
 use Yii;
 use yii\helpers\ArrayHelper;
-use yii\helpers\Html;
 use yii\helpers\Json;
 
-class News extends \common\models\base\SNews
+class QabulCall extends \common\models\base\SQabulCall
 {
     public $nameUz;
     public $nameRu;
     public $nameEn;
-    public $contentUz;
-    public $contentRu;
-    public $contentEn;
-
+    public $titleUz;
+    public $titleRu;
+    public $titleEn;
     public function rules()
     {
         $parentRules = parent::rules();
         unset($parentRules[0]);
         return array_merge($parentRules, [
-            [['alias', 'name', 'created_at', 'status', 'news_type'], 'required', 'on' => [self::SCENARIO_ADD, self::SCENARIO_EDIT]],
+            [['alias', 'title', 'name', 'url'], 'required', 'on' => [self::SCENARIO_ADD, self::SCENARIO_EDIT]],
             [['nameUz', 'nameRu', 'nameEn'], 'string', 'max' => 255],
-            [['contentUz', 'contentRu', 'contentEn'], 'string'],
-            [['image'], 'in', 'range' => ArrayHelper::map(Files::find()->all(), 'id', 'id')],
+            [['titleUz', 'titleRu', 'titleEn'], 'string', 'max' => 255],
         ]);
     }
 
@@ -33,14 +30,11 @@ class News extends \common\models\base\SNews
         return [
             'id' => Yii::t('app', 'ID'),
             'alias' => Yii::t('app', 'Alias'),
+            'title' => Yii::t('app', 'Title'),
             'name' => Yii::t('app', 'Name'),
-            'image' => Yii::t('app', 'Image'),
-            'content' => Yii::t('app', 'Content'),
+            'url' => Yii::t('app', 'Url'),
+            '_tranlate' => Yii::t('app', 'Tranlate'),
             'status' => Yii::t('app', 'Status'),
-            '_tranlate' => Yii::t('app', 'Translate'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'news_type' => Yii::t('app', 'News Type'),
         ];
     }
 
@@ -48,9 +42,6 @@ class News extends \common\models\base\SNews
     {
         if($this->isNewRecord){
             $this->alias = time().Yii::$app->getSecurity()->generateRandomString(6);
-            $this->created_at = time();
-        } else {
-            $this->updated_at = time();
         }
         try{
             $transaction = Json::decode($this->_tranlate);
@@ -62,11 +53,14 @@ class News extends \common\models\base\SNews
             'ru' => $this->nameRu,
             'en' => $this->nameEn,
         ];
-        $transaction['content'] = [
-            'uz' => $this->contentUz,
-            'ru' => $this->contentRu,
-            'en' => $this->contentEn,
+        $transaction['title'] = [
+            'uz' => $this->titleUz,
+            'ru' => $this->titleRu,
+            'en' => $this->titleEn,
         ];
+        if($this->status == self::STATUS_ACTIVE){
+            Yii::$app->db->createCommand("UPDATE `s_qabul_call` SET `status`=9")->execute();
+        }
         $this->_tranlate = Json::encode($transaction);
         return $this->save();
     }
@@ -85,11 +79,6 @@ class News extends \common\models\base\SNews
             if(isset($transaction['name']['ru'])) $this->nameRu = $transaction['name']['ru'];
             if(isset($transaction['name']['en'])) $this->nameEn = $transaction['name']['en'];
         }
-        if(!empty($transaction['content'])){
-            if(isset($transaction['content']['uz'])) $this->contentUz = $transaction['content']['uz'];
-            if(isset($transaction['content']['ru'])) $this->contentRu = $transaction['content']['ru'];
-            if(isset($transaction['content']['en'])) $this->contentEn = $transaction['content']['en'];
-        }
     }
 
     public function getName($lang = null){
@@ -103,33 +92,5 @@ class News extends \common\models\base\SNews
             return $this->name;
         }
         return $this->name;
-    }
-
-    public function getContent($lang = null){
-        if($lang == null){ $lang = Yii::$app->language; }
-        try {
-            $model = Json::decode($this->_tranlate);
-            if(isset($model['content'][$lang]) && !empty($model['content'][$lang])){
-                return $model['content'][$lang];
-            }
-        } catch (\Exception $e){
-            return $this->content;
-        }
-        return $this->content;
-    }
-
-    public function getType($code = false)
-    {
-        if ($code) {
-            return NewsType::findOne($code)->getName();
-        }
-        return ArrayHelper::map(NewsType::find()
-            ->orderBy(['name' => SORT_ASC])
-            ->all(), 'id', 'name');
-    }
-
-    public function getImg()
-    {
-        return $this->hasOne(Files::class, ['id' => 'image']);
     }
 }

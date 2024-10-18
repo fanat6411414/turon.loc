@@ -2,6 +2,7 @@
 
 namespace frontend\modules\admin\controllers;
 
+use common\models\Statistik;
 use common\models\SysConfig;
 use Yii;
 use yii\helpers\Json;
@@ -36,5 +37,15 @@ class ConfigController extends AdminController
             else $this->addError(Json::encode($model->getErrors()));
         }
         return $this->render('config', ['model' => $model]);
+    }
+
+    public function actionStatistik()
+    {
+        $model = Statistik::findOne(1);
+        if ($model->load(Yii::$app->request->post())) {
+            if($model->save()) $this->addSuccess('Saqlandi');
+            else $this->addError(Json::encode($model->getErrors()));
+        }
+        return $this->render('statistik', ['model' => $model]);
     }
 }

@@ -40,6 +40,7 @@ $this->registerJs($js, View::POS_END);
 if($select){
     $js_select = <<< JS
     $('.select-image').on('click', function (e){
+        $('#managers-img').val($(this).attr('data-id'));
         $('#news-image').val($(this).attr('data-id'));
         $('#selectShowImage').html($(this));
         $("#modal .close").click();

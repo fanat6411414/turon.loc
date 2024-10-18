@@ -1,6 +1,7 @@
 <?php
 
-use kartik\select2\Select2;
+use dosamigos\ckeditor\CKEditor;
+use kartik\widgets\Select2;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -14,14 +15,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-md-9">
             <div class="card card-outline card-primary card-body">
                 <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-                <?= $form->field($model, 'content')->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                    'options' => ['id' => 'content'],
-                    'clientOptions' => [
-                        'toolbarInline'     => false,
-                        'height'            => 300,
-                        'theme'             => 'dark', //optional: dark, red, gray, royal
-                        'language'          => 'ru'
-                    ]
+                <?= $form->field($model, 'content')->widget(CKEditor::className(), [
+                    'options' => ['rows' => 6],
+                    'preset' => 'basic'
                 ]) ?>
             </div>
         </div>

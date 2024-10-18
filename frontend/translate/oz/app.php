@@ -27,6 +27,7 @@ return [
     'Contact' => 'Aloqa',
     'All Copyright' => 'Barcha huquqlar himoyalangan',
     'Give' => 'Berish',
+    'Visiting Day' => 'Qabul kunlari',
     'Take' => 'Qaytarish',
     'Book fund' => 'Kitob fondi',
     'Books' => 'Kitoblar',

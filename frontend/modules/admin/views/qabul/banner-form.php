@@ -12,16 +12,9 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="book-create pb-2 row">
     <div class="col-md-9">
         <div class="card card-outline card-primary card-body">
+            <?= $form->field($model, 'title')->textInput(['maxlength' => true]) ?>
             <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-            <?= $form->field($model, 'content')->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                'options' => ['id' => 'content'],
-                'clientOptions' => [
-                    'toolbarInline'     => false,
-                    'height'            => 300,
-                    'theme'             => 'dark', //optional: dark, red, gray, royal
-                    'language'          => 'ru'
-                ]
-            ]) ?>
+            <?= $form->field($model, 'url')->textInput(['maxlength' => true]) ?>
         </div>
     </div>
     <div class="col-md-3">
@@ -31,9 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'language' => 'uz',
                 'options' => ['placeholder' => 'Tanlang ...'],
             ]) ?>
-            <?= \frontend\widgets\imageShow\ImageShowWidget::widget([
-                'buttonTitle' => 'Rasmlar'
-            ])?>
         </div>
         <div class="form-group text-right">
             <?= Html::a('<i class="fa fa-caret-left"></i> Orqaga', ['/pages/index'], ['class' => 'btn btn-sm btn-default']) ?>
