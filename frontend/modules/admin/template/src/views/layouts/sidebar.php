@@ -43,6 +43,28 @@
                     ],
                     [
                         'icon'  => 'sitemap',
+                        'label' => 'Tuzilma',
+                        'items' => [
+                            [
+                                'label' => 'Rahbariyat',
+                                'url'   => ['/manager/index'],
+                            ],
+                            [
+                                'label' => 'Fakultetlar',
+                                'url'   => ['/fakultet/index'],
+                            ],
+                            [
+                                'label' => 'Kafedralar',
+                                'url'   => ['/kafedra/index'],
+                            ],
+                            [
+                                'label' => 'Bo\'limlar',
+                                'url'   => ['/bulim/index'],
+                            ],
+                        ],
+                    ],
+                    [
+                        'icon'  => 'project-diagram',
                         'label' => 'Menyular',
                         'items' => [
                             [
@@ -55,9 +77,9 @@
                             ],
                         ],
                     ],
-                    ['label' => 'Sahifalar',  'icon' => 'file', 'url' => ['/pages/index']],
+                    ['label' => 'Sahifalar',  'icon' => 'window-restore', 'url' => ['/pages/index']],
                     ['label' => 'Xodimlar',  'icon' => 'users', 'url' => ['/managers/index']],
-                    ['label' => 'Fayl menejeri',  'icon' => 'file', 'url' => ['/file-manager/index']],
+                    ['label' => 'Fayl menejeri',  'icon' => 'file-image', 'url' => ['/file-manager/index']],
                     [
                         'icon'  => 'user-graduate',
                         'label' => 'Qabul',
@@ -78,6 +100,11 @@
                     ],
                     ['label' => 'Login', 'url' => ['site/login'], 'icon' => 'sign-in-alt', 'visible' => Yii::$app->user->isGuest],
                     ['label' => 'Statik ma\'lumotlar', 'header' => true],
+                    [
+                        'icon'  => 'globe',
+                        'label' => 'Foydali havolalar',
+                        'url' => ['/usefull/index']
+                    ],
                     [
                         'icon'  => 'id-card',
                         'iconStyle' => 'fa',

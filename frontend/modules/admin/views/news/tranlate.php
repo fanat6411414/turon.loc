@@ -1,5 +1,6 @@
 <?php
 
+use dosamigos\ckeditor\CKEditor;
 use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\web\View;
@@ -20,15 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'contentUz')
                     ->label($model->getAttributeLabel('content'))
-                    ->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                    'options' => ['id' => 'content'],
-                    'clientOptions' => [
-                        'toolbarInline'     => false,
-                        'height'            => 300,
-                        'theme'             => 'dark', //optional: dark, red, gray, royal
-                        'language'          => 'ru'
-                    ]
-                ]) ?>
+                    ->widget(CKEditor::className(), [
+                        'options' => ['rows' => 6],
+                        'preset' => 'basic'
+                    ]) ?>
             </div>
         </div>
         <div class="card card-outline card-primary">
@@ -39,15 +35,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'contentRu')
                     ->label($model->getAttributeLabel('content'))
-                    ->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                    'options' => ['id' => 'content'],
-                    'clientOptions' => [
-                        'toolbarInline'     => false,
-                        'height'            => 300,
-                        'theme'             => 'dark', //optional: dark, red, gray, royal
-                        'language'          => 'ru'
-                    ]
-                ]) ?>
+                    ->widget(CKEditor::className(), [
+                        'options' => ['rows' => 6],
+                        'preset' => 'basic'
+                    ]) ?>
             </div>
         </div>
         <div class="card card-outline card-primary">
@@ -58,15 +49,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     ->textInput(['maxlength' => true]) ?>
                 <?= $form->field($model, 'contentEn')
                     ->label($model->getAttributeLabel('content'))
-                    ->widget(\froala\froalaeditor\FroalaEditorWidget::class, [
-                    'options' => ['id' => 'content'],
-                    'clientOptions' => [
-                        'toolbarInline'     => false,
-                        'height'            => 300,
-                        'theme'             => 'dark', //optional: dark, red, gray, royal
-                        'language'          => 'ru'
-                    ]
-                ]) ?>
+                    ->widget(CKEditor::className(), [
+                        'options' => ['rows' => 6],
+                        'preset' => 'basic'
+                    ]) ?>
             </div>
         </div>
     </div>

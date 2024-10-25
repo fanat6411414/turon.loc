@@ -5,7 +5,6 @@ namespace frontend\modules\admin\controllers;
 use common\models\MenuFooter;
 use Yii;
 use yii\helpers\Json;
-use yii\web\NotFoundHttpException;
 
 class MenuFooterController extends AdminController
 {
@@ -39,7 +38,7 @@ class MenuFooterController extends AdminController
 
     public function actionEdit(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, MenuFooter::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -52,7 +51,7 @@ class MenuFooterController extends AdminController
 
     public function actionTranslate(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, MenuFooter::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -65,20 +64,12 @@ class MenuFooterController extends AdminController
 
     public function actionDelete(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, MenuFooter::class);
         if ($model->delete()) {
             $this->addSuccess('Saqlandi');
         } else {
             $this->addError(Yii::t('app', 'Error'));
         }
         return $this->redirect(['/menu-footer/index']);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = MenuFooter::findOne(['alias' => $id])) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

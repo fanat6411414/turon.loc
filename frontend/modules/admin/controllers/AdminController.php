@@ -9,6 +9,7 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii\web\NotFoundHttpException;
 
 class AdminController extends Controller
 {
@@ -148,5 +149,13 @@ class AdminController extends Controller
     public function getBaseUrl()
     {
         return Yii::$app->request->hostInfo;
+    }
+
+    protected function findModel($id, $class)
+    {
+        if (($model = $class::findOne(['alias' => $id])) !== null) {
+            return $model;
+        }
+        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

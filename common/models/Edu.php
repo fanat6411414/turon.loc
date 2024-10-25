@@ -80,6 +80,11 @@ class Edu extends \common\models\base\SEdu
             if(isset($transaction['name']['ru'])) $this->nameRu = $transaction['name']['ru'];
             if(isset($transaction['name']['en'])) $this->nameEn = $transaction['name']['en'];
         }
+        if(!empty($transaction['desc'])){
+            if(isset($transaction['desc']['uz'])) $this->descUz = $transaction['desc']['uz'];
+            if(isset($transaction['desc']['ru'])) $this->descRu = $transaction['desc']['ru'];
+            if(isset($transaction['desc']['en'])) $this->descEn = $transaction['desc']['en'];
+        }
     }
 
     public function getEduType($code=false)
@@ -105,5 +110,18 @@ class Edu extends \common\models\base\SEdu
             return $this->name;
         }
         return $this->name;
+    }
+
+    public function getDesc($lang = null){
+        if($lang == null){ $lang = Yii::$app->language; }
+        try {
+            $model = Json::decode($this->_tranlate);
+            if(isset($model['desc'][$lang]) && !empty($model['desc'][$lang])){
+                return $model['desc'][$lang];
+            }
+        } catch (\Exception $e){
+            return $this->desc;
+        }
+        return $this->desc;
     }
 }

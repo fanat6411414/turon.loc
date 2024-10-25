@@ -37,7 +37,7 @@ class ManagersController extends AdminController
 
     public function actionEdit(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, Managers::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -50,7 +50,7 @@ class ManagersController extends AdminController
 
     public function actionTranslate(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, Managers::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -59,13 +59,5 @@ class ManagersController extends AdminController
             else $this->addError(Json::encode($model->getErrors()));
         }
         return $this->render('tranlate', ['model' => $model]);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Managers::findOne(['alias' => $id])) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

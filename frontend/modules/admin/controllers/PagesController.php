@@ -22,22 +22,10 @@ class PagesController extends AdminController
         ]);
     }
 
-    public function actionAdd()
+    public function actionAdd(string $id = null)
     {
-        $model = new Pages();
-        if ($model->load(Yii::$app->request->post())) {
-            if($model->_save()) {
-                $this->addSuccess('Saqlandi');
-                return $this->redirect(['/pages/index']);
-            }
-            else $this->addError(Json::encode($model->getErrors()));
-        }
-        return $this->render('form', ['model' => $model]);
-    }
-
-    public function actionEdit(string $id)
-    {
-        $model = $this->findModel($id);
+        $model = $id?$this->findModel($id, Pages::class) : new Pages();
+        $model->scenario = Pages::SCENARIO_ADD;
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -50,7 +38,7 @@ class PagesController extends AdminController
 
     public function actionTranslate(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, Pages::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -59,13 +47,5 @@ class PagesController extends AdminController
             else $this->addError(Json::encode($model->getErrors()));
         }
         return $this->render('tranlate', ['model' => $model]);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Pages::findOne(['alias' => $id])) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

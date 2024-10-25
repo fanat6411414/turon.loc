@@ -42,6 +42,7 @@ if($select){
     $('.select-image').on('click', function (e){
         $('#managers-img').val($(this).attr('data-id'));
         $('#news-image').val($(this).attr('data-id'));
+        $('#usefull-img_id').val($(this).attr('data-id'));
         $('#selectShowImage').html($(this));
         $("#modal .close").click();
     });

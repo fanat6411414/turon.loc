@@ -6,7 +6,6 @@ use common\models\News;
 use common\models\SysConfig;
 use Yii;
 use yii\helpers\Url;
-use yii\web\NotFoundHttpException;
 
 class NewsController extends FrontendController
 {
@@ -25,7 +24,7 @@ class NewsController extends FrontendController
 
     public function actionView(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, News::class);
         Yii::$app->view->registerMetaTag(['name' => 'keywords', 'content' => $model->name]);
         Yii::$app->view->registerMetaTag(['type' => 'image/jpeg', 'rel' => 'image_src', 'name' => 'link', 'content' => $model->img->getUrl()]);
         Yii::$app->view->registerMetaTag(['property' => 'og:title', 'content' => $model->name]);
@@ -35,13 +34,5 @@ class NewsController extends FrontendController
         Yii::$app->view->registerMetaTag(['property' => 'telegram:channel', 'content' => SysConfig::findOne(1)->tg_channel]);
         Yii::$app->view->registerMetaTag(['property' => 'og:site_name', 'content' => 'Turon universiteti rasmiy veb sayti']);
         return $this->render('view', ['model' => $model]);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = News::findOne(['alias' => $id])) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

@@ -104,4 +104,30 @@ class Pages extends \common\models\base\SPages
         $query->andFilterWhere(['like', 'name', $this->name]);
         return $dataProvider;
     }
+
+    public function getName($lang = null){
+        if($lang == null){ $lang = Yii::$app->language; }
+        try {
+            $model = Json::decode($this->_tranlate);
+            if(isset($model['name'][$lang]) && !empty($model['name'][$lang])){
+                return $model['name'][$lang];
+            }
+        } catch (\Exception $e){
+            return $this->name;
+        }
+        return $this->name;
+    }
+
+    public function getContent($lang = null){
+        if($lang == null){ $lang = Yii::$app->language; }
+        try {
+            $model = Json::decode($this->_tranlate);
+            if(isset($model['content'][$lang]) && !empty($model['content'][$lang])){
+                return $model['content'][$lang];
+            }
+        } catch (\Exception $e){
+            return $this->content;
+        }
+        return $this->content;
+    }
 }

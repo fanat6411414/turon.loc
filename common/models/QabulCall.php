@@ -93,4 +93,17 @@ class QabulCall extends \common\models\base\SQabulCall
         }
         return $this->name;
     }
+
+    public function getTitle($lang = null){
+        if($lang == null){ $lang = Yii::$app->language; }
+        try {
+            $model = Json::decode($this->_tranlate);
+            if(isset($model['title'][$lang]) && !empty($model['title'][$lang])){
+                return $model['title'][$lang];
+            }
+        } catch (\Exception $e){
+            return $this->title;
+        }
+        return $this->title;
+    }
 }

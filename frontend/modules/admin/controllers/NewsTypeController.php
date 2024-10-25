@@ -37,7 +37,7 @@ class NewsTypeController extends AdminController
 
     public function actionEdit(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, NewsType::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -50,7 +50,7 @@ class NewsTypeController extends AdminController
 
     public function actionTranslate(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, NewsType::class);
         if ($model->load(Yii::$app->request->post())) {
             if($model->_save()) {
                 $this->addSuccess('Saqlandi');
@@ -63,20 +63,12 @@ class NewsTypeController extends AdminController
 
     public function actionDelete(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, NewsType::class);
         if ($model->delete()) {
             $this->addSuccess('Saqlandi');
         } else {
             $this->addError(Yii::t('app', 'Error'));
         }
         return $this->redirect(['/news-type/index']);
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = NewsType::findOne(['alias' => $id])) !== null) {
-            return $model;
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
     }
 }

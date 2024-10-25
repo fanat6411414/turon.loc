@@ -52,10 +52,6 @@ class Managers extends SManagers
         } catch(\Exception $e){
             $transaction = [];
         }
-        if($this->about) str_replace('%Powered by Froala Editor%', '', $this->about);
-        if($this->aboutUz) str_replace('%Powered by Froala Editor%', '', $this->aboutUz);
-        if($this->aboutRu) str_replace('%Powered by Froala Editor%', '', $this->aboutRu);
-        if($this->aboutEn) str_replace('%Powered by Froala Editor%', '', $this->aboutEn);
         $transaction['name'] = [
             'uz' => $this->nameUz,
             'ru' => $this->nameRu,
@@ -97,5 +93,23 @@ class Managers extends SManagers
             return $this->name;
         }
         return $this->name;
+    }
+
+    public function getAbout($lang = null){
+        if($lang == null){ $lang = Yii::$app->language; }
+        try {
+            $model = Json::decode($this->_tranlate);
+            if(isset($model['about'][$lang]) && !empty($model['about'][$lang])){
+                return $model['about'][$lang];
+            }
+        } catch (\Exception $e){
+            return $this->about;
+        }
+        return $this->about;
+    }
+
+    public function getFiles()
+    {
+        return $this->hasOne(Files::class, ['id' => 'img']);
     }
 }

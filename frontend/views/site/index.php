@@ -1,10 +1,13 @@
 <?php
 
 /** @var yii\web\View $this */
+/** @var \common\models\QabulCall $modelQabulBanner */
+/** @var \common\models\Edu $modelEdub */
+/** @var \common\models\Edu $modelEdum */
+
+use yii\helpers\Html;
 
 ?>
-
-<!-- Asosiy Home -->
 <section class="banner-two-area sub-bg">
     <div class="container">
         <div class="banner-two__content">
@@ -44,9 +47,7 @@
         </div>
     </div>
 </section>
-<!-- Asosiy Home end-->
 
-<!-- Biz haqimizda -->
 <section class="faq-nine-area pt-120 pb-120">
     <div class="container">
         <div class="row g-5">
@@ -116,9 +117,7 @@
         </div>
     </div>
 </section>
-<!-- Biz haqimizda end-->
 
-<!-- Ta'lim yo'nalishlari -->
 <section class="pricing-area pt-120 pb-120 sub-bg">
     <div class="container">
         <div class="section-header mb-40 text-center">
@@ -143,24 +142,22 @@
             <div class="tab-pane fade show active" id="tab-content2" role="tabpanel"
                  aria-labelledby="tab-item2">
                 <div class="row g-4">
+                    <?php foreach ($modelEdub as $v): ?>
                     <div class="col-xl-6 col-md-6">
                         <div class="pricing__item bor p-4">
                             <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
+                                <h4><?= $v->getName()?></h4>
                             </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
+                            <p class="fw-500 text-capitalize"><?= $v->getDesc()?></p>
                             <ul class="mb-0 mt-10"
                                 style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                                 <li style="display: block; width: 48%;">
                                     <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
+                                    <h5 class="p-0 m-0"><?= $v->summ_kunduzgi ?> mln. so'm / yil</h5>
                                 </li>
                                 <li style="display: block; width: 48%;">
                                     <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
+                                    <h5 class="p-0 m-0"><?= $v->summ_sirtqi ?> mln. so'm / yil</h5>
                                 </li>
                             </ul>
                             <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
@@ -171,206 +168,40 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="tab-pane fade" id="tab-content1" role="tabpanel" aria-labelledby="tab-item1">
                 <div class="row g-4">
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
+                    <?php foreach ($modelEdum as $v): ?>
+                        <div class="col-xl-6 col-md-6">
+                            <div class="pricing__item bor p-4">
+                                <div class="item-head">
+                                    <h4><?= $v->getName()?></h4>
+                                </div>
+                                <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
+                                    vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
+                                    ega bo'ling</p>
+                                <ul class="mb-0 mt-10"
+                                    style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
+                                    <li style="display: block; width: 48%;">
+                                        <p class="p-0 m-0">Kunduzgi</p><br>
+                                        <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
+                                    </li>
+                                    <li style="display: block; width: 48%;">
+                                        <p class="p-0 m-0">Sirtqi</p><br>
+                                        <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
+                                    </li>
+                                </ul>
+                                <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
+                                    <a href="#0" class="btn-one-light mt-20 w-50 text-center"
+                                       style="border: 1px solid #F79009;">Ariza yuborish</a>
+                                    <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
+                                        ko'chirish</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-md-6">
-                        <div class="pricing__item bor p-4">
-                            <div class="item-head">
-                                <h4>Dasturiy Injiniring <br>
-                                    (Dasturiy Injiniring)</h4>
-                            </div>
-                            <p class="fw-500 text-capitalize">Kompyuter va mobil qurilmalar dasturiy
-                                vositalarini loyihalash, ishlab chiqarish va testlash bo'yicha mutaxassislikka
-                                ega bo'ling</p>
-                            <ul class="mb-0 mt-10"
-                                style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Kunduzgi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                                <li style="display: block; width: 48%;">
-                                    <p class="p-0 m-0">Sirtqi</p><br>
-                                    <h5 class="p-0 m-0">18 mln. so'm / yil</h5>
-                                </li>
-                            </ul>
-                            <div class="r" style="display: flex; gap: 15px; justify-content: space-between;">
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center"
-                                   style="border: 1px solid #F79009;">Ariza yuborish</a>
-                                <a href="#0" class="btn-one-light mt-20 w-50 text-center">O'qishni
-                                    ko'chirish</a>
-                            </div>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
@@ -381,9 +212,7 @@
         </div>
     </div>
 </section>
-<!-- Ta'lim yo'nalishlari -->
 
-<!-- Maqsadlar -->
 <section class="choose-four-area pt-120 pb-80">
     <div class="container">
         <div class="row g-5 align-items-center">
@@ -454,100 +283,48 @@
         </div>
     </div>
 </section>
-<!-- Maqsadlar -->
 
-<!-- Qabul section -->
 <section class="discout-five-area pt-80 pb-80 bg-image sub-bg"
          data-background="/images/bg/team-seven-bg.png"
          style="background-image: url(/images/bg/team-seven-bg.png&quot;); background: #0E2A46E5; background-repeat: no-repeat; background-size: cover;">
     <div class="container">
         <div class="col-xl-12">
             <div class="discout-two__item">
-                <h5 style="color: #F79009;">Qabul 2024</h5>
+                <h5 style="color: #F79009;"><?= $modelQabulBanner->getTitle() ?></h5>
                 <h1 class="text-white wow fadeInUp" data-wow-delay="00ms" data-wow-duration="1500ms"
                     style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">
-                    Qulaylik yaratish maqsadida qabul komissiyasi 24/7 rejimda ishlab kelmoqda</h1>
-                <a href="" class="btn-one-light mt-30 wow fadeInUp" data-wow-delay="00ms"
-                   data-wow-duration="1500ms"
-                   style="visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;">Batafsil...</a>
-
+                    <?= $modelQabulBanner->getName() ?></h1>
+                <?= \yii\helpers\Html::a(Yii::t('app', 'Read more'), $modelQabulBanner->url, [
+                    'class' => 'btn-one-light mt-30 wow fadeInUp',
+                    'data-wow-delay' => '00ms',
+                    'data-wow-duration' => '1500ms',
+                    'style' => 'visibility: visible; animation-duration: 1500ms; animation-delay: 0ms; animation-name: fadeInUp;'
+                ])?>
             </div>
         </div>
     </div>
 </section>
-<!-- Qabul section -->
-
-<!-- NEWS -->
 <?= \frontend\widgets\news\News::widget()?>
-<!-- NEWS end-->
 
-
-<!-- Hamkorlik -->
 <div class="pb-80 sub-bg">
     <div class="container">
         <div class="brand-two__wrp">
             <div class="swiper brand__slider swiper-initialized swiper-horizontal swiper-pointer-events">
-                <div class="swiper-wrapper" id="swiper-wrapper-5d5168fa1f4a07b3" aria-live="off"
-                     style="transform: translate3d(-2148px, 0px, 0px); transition-duration: 0ms;">
-                    <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="1 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="0">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="2 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="1">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="3 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="2">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="4 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="3">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate" role="group" aria-label="5 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="4">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-duplicate-prev" role="group"
-                         aria-label="6 / 6" style="width: 155px; margin-right: 24px;"
-                         data-swiper-slide-index="5">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate-active" role="group" aria-label="1 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="0">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate-next" role="group" aria-label="2 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="1">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="3 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="2">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="4 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="3">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide" role="group" aria-label="5 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="4">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-prev" role="group" aria-label="6 / 6"
-                         style="width: 155px; margin-right: 24px;" data-swiper-slide-index="5">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-active" role="group"
-                         aria-label="1 / 6" style="width: 155px; margin-right: 24px;"
-                         data-swiper-slide-index="0">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
-                    <div class="swiper-slide swiper-slide-duplicate swiper-slide-next" role="group"
-                         aria-label="2 / 6" style="width: 155px; margin-right: 24px;"
-                         data-swiper-slide-index="1">
-                        <img src="images/turon/iconHamkor.png" alt="image">
-                    </div>
+                <div class="swiper-wrapper" id="swiper-wrapper-5d5168fa1f4a07b3" aria-live="off" style="transform: translate3d(-2148px, 0px, 0px); transition-duration: 0ms;">
+                    <?php foreach ($modelUsefull as $k => $v): ?>
+                    <?= Html::a(
+                            Html::img($v->img->getUrl(), ['alt' => $v->name, 'title' => $v->getName()]),
+                            $v->url,
+                            [
+                                'class' => 'swiper-slide',
+                                'role' => 'group',
+                                'aria-label' => "$k / 6",
+                                'style' => 'width: 155px; margin-right: 24px;',
+                                'data-swiper-slide-index' => $k,
+                                'target' => '_blank'
+                            ]
+                        )?>
+                    <?php endforeach; ?>
                 </div>
                 <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
             </div>

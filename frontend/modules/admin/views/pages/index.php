@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'name',
-                'value' => function ($model){ return Html::a($model->name, ['/pages/edit', 'id' => $model->alias]); },
+                'value' => function ($model){ return Html::a($model->name, ['/pages/add', 'id' => $model->alias]); },
                 'format' => 'raw'
             ],
             [

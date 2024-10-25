@@ -1,8 +1,6 @@
 <?php
 return [
     //    Umumiy
-    'ARM information system' => 'ARM axborot tizimi',
-    'Digital library' => 'Raqamli kutubxona',
     'Read more' => 'Batafsil',
     'Search' => 'Saytdan izlash',
     'Not found' => "Ma'lumot topilmadi",
@@ -24,6 +22,7 @@ return [
     'Home' => 'Bosh sahifa',
     'About' => 'Haqimizda',
     'Services' => 'Xizmatlar',
+    'Managers' => 'Rahbariyat',
     'Contact' => 'Aloqa',
     'All Copyright' => 'Barcha huquqlar himoyalangan',
     'Give' => 'Berish',
@@ -43,6 +42,8 @@ return [
     'Employees' => 'Xodimlar',
     'Reports' => 'Hisobotlar',
     'Membership' => 'A\'zolik',
+    'Faculties' => 'Fakultetlar',
+    'Dean of the faculty' => 'Fakultet dekani',
 
 //    Pages
     'Monitoring' => 'Monitoring',

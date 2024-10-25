@@ -85,7 +85,7 @@ class FileManagerController extends AdminController
 
     public function actionDelete(string $id)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($id, Files::class);
         if ($model->delete()) {
             if(is_file($model->getLocalUrl())){
                 unlink($model->getLocalUrl());
@@ -99,16 +99,8 @@ class FileManagerController extends AdminController
     {
         $this->layout = false;
         Yii::$app->response->format = 'json';
-        if (($model = Files::findOne($id)) !== null) {
+        if (($model = Files::findOne($id, Files::class)) !== null) {
             return $model->getUrl();
-        }
-        throw new NotFoundHttpException('The requested page does not exist.');
-    }
-
-    protected function findModel($id)
-    {
-        if (($model = Files::findOne(['alias' => $id])) !== null) {
-            return $model;
         }
         throw new NotFoundHttpException('The requested page does not exist.');
     }
