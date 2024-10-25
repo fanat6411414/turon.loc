@@ -19,7 +19,7 @@ class Module extends \yii\base\Module
             'class' => 'yii\web\User',
             'identityClass' => 'frontend\modules\admin\models\Auth',
             'enableAutoLogin' => true,
-            'loginUrl' => ['/admin/site/login'],
+            'loginUrl' => ['/site/login'],
             'enableSession' => true
         ]);
 
