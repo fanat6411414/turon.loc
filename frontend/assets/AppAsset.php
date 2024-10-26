@@ -38,7 +38,7 @@ class AppAsset extends AssetBundle
         'https://code.jquery.com/jquery-3.2.1.slim.min.js',
         'https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js',
         'https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js',
-        'js/main.js',
+//        'js/main.js',
     ];
     public $depends = [];
 }
