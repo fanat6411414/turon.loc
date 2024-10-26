@@ -34,7 +34,7 @@ class AppAsset extends AssetBundle
         'js/nice-select.min.js',
         'js/parallax.js',
         'js/jquery.waypoints.js',
-        'js/script.js',
+        'js/scripts.js',
         'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js',
         'https://code.jquery.com/jquery-3.2.1.slim.min.js',
         'https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js',
