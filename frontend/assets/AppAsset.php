@@ -11,7 +11,6 @@ class AppAsset extends AssetBundle
     public $css = [
         'https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css',
         'https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700',
-        'images/favicon.png',
         'css/bootstrap.min.css',
         'css/meanmenu.css',
         'css/all.min.css',
