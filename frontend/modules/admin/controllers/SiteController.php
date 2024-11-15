@@ -45,6 +45,23 @@ class SiteController extends AdminController
         ]);
     }
 
+    public function actionProfil()
+    {
+        $this->view->title = Yii::$app->name;
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+        $this->layout = 'main-login';
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->redirect(['/site/index']);
+        }
+        $model->password = '';
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
     public function actionLogout()
     {
         Yii::$app->user->logout();
