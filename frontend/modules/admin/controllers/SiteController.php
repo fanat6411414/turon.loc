@@ -42,9 +42,7 @@ class SiteController extends AdminController
             return $this->redirect(['/site/index']);
         }
         $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('login', ['model' => $model]);
     }
 
     public function actionProfil()
