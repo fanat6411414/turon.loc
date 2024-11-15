@@ -4,8 +4,10 @@ namespace frontend\modules\admin\controllers;
 
 use common\models\SysActions;
 use common\models\SysUser;
+use frontend\modules\admin\models\ChangePasswordForm;
 use frontend\modules\admin\models\LoginForm;
 use Yii;
+use yii\base\InvalidParamException;
 
 class SiteController extends AdminController
 {
@@ -47,19 +49,16 @@ class SiteController extends AdminController
 
     public function actionProfil()
     {
-        $this->view->title = Yii::$app->name;
-        if (!Yii::$app->user->isGuest) {
-            return $this->goHome();
+        try {
+            $model = ChangePasswordForm::findOne(Yii::$app->user->id);
+        } catch (InvalidParamException $e) {
+            throw new \yii\web\BadRequestHttpException($e->getMessage());
         }
-        $this->layout = 'main-login';
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(['/site/index']);
+        if ($model->load(\Yii::$app->request->post()) && $model->validate() && $model->changePassword()) {
+            $this->addSuccess('Parol yangilandi');
+            return $this->redirect(['site/profil']);
         }
-        $model->password = '';
-        return $this->render('login', [
-            'model' => $model,
-        ]);
+        return $this->render('password', ['model' => $model]);
     }
 
     public function actionLogout()
