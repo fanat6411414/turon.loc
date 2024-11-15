@@ -39,7 +39,7 @@ class SiteController extends AdminController
         $this->layout = 'main-login';
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->redirect(['/site/index']);
+            return $this->redirect(['site/index']);
         }
         $model->password = '';
         return $this->render('login', ['model' => $model]);
